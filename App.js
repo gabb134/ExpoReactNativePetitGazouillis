@@ -7,7 +7,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Bonjour tour le monde!!!</Text>
-      <Text>Allo!   !</Text>
+      <Text>Allo!!</Text>
       <Image source={logo} style={{ width: 305, height: 159 }} /> 
       <StatusBar style="auto" />
     </View>
