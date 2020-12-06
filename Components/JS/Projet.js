@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#666666',
         margin: 10,
         width: 1080,
-        height: 1920
+        height: 1980
     },
     entete:{
         width: 1080,
@@ -26,10 +26,10 @@ export const styles = StyleSheet.create({
         paddingHorizontal:30,
         paddingBottom:10,
     },
-    coprs:{
+    corps:{
         width: 1080,
         height: 980,
-        flex:1,
+        flex:10,
         alignItems:'center',
         justifyContent:'center',
         paddingHorizontal:10,
@@ -81,7 +81,8 @@ export const styles = StyleSheet.create({
         marginBottom: 10
     },
     loginText: {
-        fontSize: 50
+        fontSize: 50,
+        color: "black"
     },
     nouvelUtilisateur: {
         fontSize: 50,
@@ -123,6 +124,11 @@ export const styles = StyleSheet.create({
         color: "white",
         marginBottom: 60
     },
+    miniAvatar:{
+        width:128,
+        height:128,
+        margin:50
+    },
 });
 
 export const validationSchema = yup.object().shape({
@@ -139,6 +145,31 @@ export const validationSchema = yup.object().shape({
 export function quitterSession(){
     alert("Quitter session")
     this.setState({"layout":"login"})
+}
+export async function suivre(){
+ 
+
+        alert("Je suis cette personne\n Jeton : "+this.props.jeton)
+        if(jeton!=""){
+
+            var url = "http://127.0.0.1:5000/api/suivre/Harry" //test avec harry
+
+            var obj = {
+                method: 'POST',
+                headers:{
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + this.props.jeton,
+                },
+            };
+            var reponse = getJson(url, obj, this, "Je suis une personne", "dans suivre")
+        }
+
+    
+
+}
+export function nePlusSuivre(){
+    alert("Je ne suis plus cette personne")
 }
 export function naviguer(destination){
     this.setState({"layout":destination})

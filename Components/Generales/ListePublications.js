@@ -2,7 +2,8 @@ import React from 'react';
 import {
     View,
     Text,
-    FlatList
+    FlatList,
+    Image
 } from 'react-native';
 import * as Projet from '../JS/Projet.js'
 

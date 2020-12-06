@@ -24,6 +24,8 @@ export default class Accueil extends React.Component {
     render(){
         return(
             <View style={Projet.styles.container}>
+
+
                 <Navigation naviguer={this.props.naviguer} />
                 <View style={Projet.styles.corps}>
                     <Text style={Projet.styles.flash}>Accueil </Text><br/>
@@ -32,17 +34,16 @@ export default class Accueil extends React.Component {
                     <Text style={Projet.styles.flash}>Flash:{this.state.flash}</Text><br/>
                     <Text style={Projet.styles.flash}>Utilisateur:{this.props.utilisateur.nom}</Text>
                     <Text style={Projet.styles.flash}>Jeton:{this.props.jeton}</Text>
+                    
                     <ScrollView style={Projet.styles.scrollView}>
                         <Text style={Projet.styles.texteScrollView}>
-                            {this.state.utilisateurs===null ? (<ActivityIndicator/>):(
+                            {this.state.utilisateurs === null ? (<ActivityIndicator/>):(
                                 <ListeUtilisateurs utilisateurs={this.state.utilisateurs}/>)
                             }
-                            {this.state.publications===null ? (<ActivityIndicator/>):(
+                            {this.state.publications === null ? (<ActivityIndicator/>):(
                                 <ListePublications publications={this.state.publications}/>)
                             }
-                            Ceci est un exemple pour voir si le texte s'affiche correctement dans le 
-                            scrollView.
-
+                        
                         </Text>
 
                     </ScrollView>

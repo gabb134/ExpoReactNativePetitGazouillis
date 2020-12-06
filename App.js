@@ -16,6 +16,7 @@ export default class PetitsGazouillis extends React.Component {
         this.afficherStateParent = Projet.afficherStateParent.bind(this)
         this.quitterSession = Projet.quitterSession.bind(this)
         this.naviguer = Projet.naviguer.bind(this)
+        this.suivre = Projet.suivre.bind(this)
     }
     componentDidMount(){
 
@@ -27,7 +28,7 @@ export default class PetitsGazouillis extends React.Component {
         switch(this.state.layout){
             case "accueil":
                 return(
-                    <Accueil utilisateur={this.state.utilisateur} jeton={this.state.jeton} quitterSession={this.quitterSession} naviguer={this.naviguer}/>
+                    <Accueil utilisateur={this.state.utilisateur} jeton={this.state.jeton} quitterSession={this.quitterSession} naviguer={this.naviguer} suivre={this.suivre}/>
                 )
                 break;
             case "profil":
