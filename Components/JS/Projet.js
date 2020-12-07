@@ -146,26 +146,31 @@ export function quitterSession(){
     alert("Quitter session")
     this.setState({"layout":"login"})
 }
-export async function suivre(){
- 
+export async function suivre(jeton,nom,thisRef){
 
-        alert("Je suis cette personne\n Jeton : "+this.props.jeton)
+    var personneSuivi = nom["nom"]
+
+      
+    
         if(jeton!=""){
 
-            var url = "http://127.0.0.1:5000/api/suivre/Harry" //test avec harry
-
+            var url = "http://127.0.0.1:5000/api/suivre/"+nom 
+            alert("Dans requete\nJeton : "+jeton + "\nNom: "+ nom)
             var obj = {
                 method: 'POST',
                 headers:{
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.props.jeton,
+                    'Authorization': 'Bearer ' + jeton,
                 },
+                body:JSON.stringify({
+                    jeton:jeton,
+                    nom:personneSuivi
+                })
             };
-            var reponse = getJson(url, obj, this, "Je suis une personne", "dans suivre")
+            var reponse = getJson(url, obj, thisRef, "Je suis "+nom, "dans suivre")
+            
         }
-
-    
 
 }
 export function nePlusSuivre(){

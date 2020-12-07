@@ -14,6 +14,7 @@ export default class ListeUtilisateurs extends React.Component{
         this.state={}
        // this.suivre = Projet.suivre.bind(this)
         //this.suivre()
+        
     }
     render(){
         return(
@@ -22,8 +23,9 @@ export default class ListeUtilisateurs extends React.Component{
                 data={this.props.utilisateurs.items}
                 renderItem={({item}) => <View>
                     <Image source={item.avatar} style={Projet.styles.miniAvatar}/>
-                    <TouchableOpacity style={Projet.styles.navBtn}>
-                        <Text style={Projet.styles.loginText} onPress={() => Projet.suivre(this) }>Suivre</Text>
+                   
+                    <TouchableOpacity  disabled={true} style={Projet.styles.navBtn}>
+                        <Text style={Projet.styles.loginText} onPress={() => Projet.suivre(this.props.jeton,item.nom,this) }>Suivre</Text>
                     </TouchableOpacity>
                     <Text style={Projet.styles.flash}> Nom: {item.nom}</Text> <br/>
                 </View>}

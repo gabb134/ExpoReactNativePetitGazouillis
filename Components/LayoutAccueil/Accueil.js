@@ -10,12 +10,15 @@ import logo from '../../assets/logoGG.png'
 export default class Accueil extends React.Component {
     constructor(props){
         super(props);
-        this.state ={ premierefois:true,flash:"",utilisateurs:null, publications:null}
+        this.state ={ premierefois:true,flash:"",utilisateurs:null, publications:null,jeton:"TEST"}
 
         this.chargerTousLesUtilisateurs = Projet.chargerTousLesUtilisateurs.bind(this)
         this.chargerTousLesUtilisateurs()
         this.chargerTousLesPublications = Projet.chargerTousLesPublications.bind(this)
         this.chargerTousLesPublications()
+        var jeton = "testtt"
+        this.jeton = jeton
+
     }
 
     componentDidUpdate(){
@@ -33,12 +36,12 @@ export default class Accueil extends React.Component {
                     <Image source={this.props.utilisateur.avatar} style={Projet.styles.avatar} />
                     <Text style={Projet.styles.flash}>Flash:{this.state.flash}</Text><br/>
                     <Text style={Projet.styles.flash}>Utilisateur:{this.props.utilisateur.nom}</Text>
-                    <Text style={Projet.styles.flash}>Jeton:{this.props.jeton}</Text>
+                    <Text style={Projet.styles.flash} jeton={this.props.jeton}>Jeton:{this.props.jeton}</Text>
                     
                     <ScrollView style={Projet.styles.scrollView}>
                         <Text style={Projet.styles.texteScrollView}>
                             {this.state.utilisateurs === null ? (<ActivityIndicator/>):(
-                                <ListeUtilisateurs utilisateurs={this.state.utilisateurs}/>)
+                                <ListeUtilisateurs utilisateurs={this.state.utilisateurs} jeton={this.props.jeton}/>)
                             }
                             {this.state.publications === null ? (<ActivityIndicator/>):(
                                 <ListePublications publications={this.state.publications}/>)
